@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joint Seat Allocation Authority (JoSAA) 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        josaaNavy: '#0a2d54',
+                        josaaBlue: '#0d4876',
+                        josaaLightBlue: '#0f5b94',
+                        josaaButtonBlue: '#0d5ca2',
+                        josaaGreyBg: '#f0f4f8',
+                        josaaHeaderGrey: '#eaeaea',
+                        josaaTextBlack: '#1c1c1c',
+                        josaaOrange: '#f0a824',
+                        josaaGreen: '#22c55e',
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Exact layout replication styles */
+        .scrolling-ticker-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .scrolling-ticker-content {
+            display: inline-block;
+            animation: ticker-slide 30s linear infinite;
+        }
+        .scrolling-ticker-content:hover {
+            animation-play-state: paused;
+        }
+        @keyframes ticker-slide {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Grid styling matching official portals */
+        .official-table th, .official-table td {
+            border: 1px solid #d0d0d0;
+            padding: 12px 14px;
+            font-size: 13.5px;
+        }
+        
+        /* Captcha stylized display mimicking image 1000149979.png */
+        .captcha-scanlines {
+            background-color: #faf0f0;
+            background-image: radial-gradient(#d5c8c8 15%, transparent 16%),
+                              radial-gradient(#d5c8c8 15%, transparent 16%);
+            background-size: 6px 6px;
+            background-position: 0 0, 3px 3px;
+        }
+        
+        /* Printing style configurations */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-receipt-letter, #printable-receipt-letter * {
+                visibility: visible;
+            }
+            #printable-receipt-letter {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fcfdfd] text-[#1c1c1c] font-sans min-h-screen flex flex-col antialiased">
+
+    <!-- Top Decorative National Tricolor Ribbon -->
+    <div class="h-1.5 w-full flex shrink-0">
+        <div class="w-1/3 bg-[#f97316]"></div>
+        <div class="w-1/3 bg-white"></div>
+        <div class="w-1/3 bg-[#16a34a]"></div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!--          PORTAL VIEW A: PUBLIC HOMEPAGE (josaa.nic.in)    -->
+    <!-- ========================================================= -->
+    <div id="view-homepage" class="flex-grow flex flex-col">
+        <!-- Top Accessibility Utility Menu bar -->
+        <div class="bg-[#edece8] text-slate-700 py-1 px-4 border-b border-gray-300">
+            <div class="max-w-6xl mx-auto flex justify-between items-center text-[10px] md:text-xs">
+                <!-- Government Ministries Identification -->
+                <div class="flex items-center space-x-3 font-semibold text-slate-600">
+                    <span class="flex items-center"><i class="fa-solid fa-flag text-orange-600 mr-1"></i> भारत सरकार | GOVERNMENT OF INDIA</span>
+                    <span class="hidden md:inline">|</span>
+                    <span class="hidden md:inline"><i class="fa-solid fa-graduation-cap text-blue-600 mr-1"></i> शिक्षा मंत्रालय | MINISTRY OF EDUCATION</span>
+                </div>
+                <!-- Functional Accessibility Links -->
+                <div class="flex items-center space-x-3 font-bold text-slate-500">
+                    <span class="cursor-pointer" title="Search"><i class="fa-solid fa-search"></i></span>
+                    <span>|</span>
+                    <span class="cursor-pointer" title="Sitemap"><i class="fa-solid fa-sitemap"></i></span>
+                    <span>|</span>
+                    <span class="cursor-pointer" title="Accessibility Options"><i class="fa-solid fa-universal-access"></i></span>
+                    <span>|</span>
+                    <span class="cursor-pointer">A-</span>
+                    <span class="cursor-pointer">A</span>
+                    <span class="cursor-pointer">A+</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Header (Matching Screenshot Layout 1000149978.png) -->
+        <header class="bg-white py-3 px-4 border-b border-gray-200">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+                <!-- Branding Left -->
+                <div class="flex items-center space-x-3">
+                    <!-- JoSAA square stamp -->
+                    <div class="bg-josaaLightBlue text-white p-2.5 rounded shadow-inner text-center leading-none min-w-[90px] select-none">
+                        <span class="font-black text-2xl tracking-tighter block">JoSAA</span>
+                        <span class="text-[7px] text-slate-200 block uppercase mt-0.5 tracking-tighter">Seat Allocation</span>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 tracking-wider">संयुक्त सीट आवंटन प्राधिकरण</p>
+                        <h1 class="text-xl md:text-2xl font-black text-[#0d4876]">Joint Seat Allocation Authority</h1>
+                        <p class="text-xs text-slate-400 font-bold">Admission and eCounselling Services for Session 2026</p>
+                    </div>
+                </div>
+                <!-- Tricolor circular emblem right -->
+                <div class="flex items-center space-x-2">
+                    <div class="bg-emerald-50 border border-emerald-200 p-1.5 rounded-full shadow-inner">
+                        <div class="h-14 w-14 rounded-full border-2 border-dashed border-orange-500 flex items-center justify-center bg-white text-xs font-bold text-orange-600">
+                            <!-- Circular crest graphical vector replacement -->
+                            <svg class="h-9 w-9 text-emerald-700" viewBox="0 0 100 100" fill="currentColor">
+                                <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="4"/>
+                                <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" stroke-width="2"/>
+                                <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="50" cy="50" r="15" fill="orange"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Homepage Navigation Tab Strip -->
+        <nav class="bg-[#1c2733] text-white text-xs font-bold border-b border-orange-500 shrink-0">
+            <div class="max-w-6xl mx-auto flex flex-wrap items-center">
+                <a href="#" class="py-3 px-5 bg-[#f0a824] text-slate-900 flex items-center hover:bg-orange-400 transition"><i class="fa-solid fa-house mr-1.5"></i> Home</a>
+                <a href="#" class="py-3 px-4 hover:bg-[#2c3947] transition border-r border-[#2c3947]">About <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i></a>
+                <a href="#" class="py-3 px-4 hover:bg-[#2c3947] transition border-r border-[#2c3947]">Information <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i></a>
+                <a href="#" class="py-3 px-4 hover:bg-[#2c3947] transition border-r border-[#2c3947]">Schedule</a>
+                <a href="#" class="py-3 px-4 hover:bg-[#2c3947] transition border-r border-[#2c3947]">eServices <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i></a>
+                <div class="ml-auto pr-4">
+                    <button class="text-white text-md p-2.5 hover:text-orange-400 focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- LATEST NEWS ticker line exactly as screenshot -->
+        <div class="bg-[#0b213b] text-white text-xs flex items-center border-b border-orange-500 shrink-0">
+            <div class="bg-red-700 text-[10px] font-black uppercase tracking-wider py-2.5 px-6 shrink-0 shadow-md">
+                LATEST NEWS
+            </div>
+            <div class="scrolling-ticker-container py-2 flex-grow overflow-hidden relative">
+                <div class="scrolling-ticker-content text-[11px] font-semibold text-slate-200">
+                    <span>• JoSAA 2026 has been announced. New UG program BCyber launcher check https://itk.ac.in/wsais/b-cyb</span>
+                    <span class="mx-12">|</span>
+                    <span>• Important updates regarding physical reporting of Round 5 candidates have been finalized on JoSAA databases.</span>
+                </div>
+            </div>
+            <div class="px-3 shrink-0 flex space-x-2 text-[10px] border-l border-slate-700">
+                <button class="hover:text-orange-400"><i class="fa-solid fa-caret-left"></i></button>
+                <button class="hover:text-orange-400"><i class="fa-solid fa-pause"></i></button>
+                <button class="hover:text-orange-400"><i class="fa-solid fa-caret-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Home Content Layout (Left Sidebar + Right Column) -->
+        <div class="max-w-6xl w-full mx-auto p-4 md:p-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Side links panel -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- News & Events Toggle Block -->
+                <div class="bg-white border border-gray-200 shadow-sm rounded-md overflow-hidden">
+                    <div class="flex border-b border-gray-200 text-xs font-bold">
+                        <button class="flex-1 py-3 px-4 bg-slate-50 text-[#0d4876] border-b-2 border-[#0d4876]">NEWS & EVENTS</button>
+                        <button class="flex-1 py-3 px-4 text-slate-500 hover:bg-slate-50">PUBLIC NOTICES</button>
+                    </div>
+                    <div class="p-4 space-y-3.5 text-xs text-slate-700">
+                        <ul class="space-y-3 list-disc pl-4 text-slate-600">
+                            <li class="hover:text-[#0d4876] cursor-pointer font-medium">Business Rules 2026</li>
+                            <li class="hover:text-[#0d4876] cursor-pointer font-medium">JoSAA Schedule 2026</li>
+                        </ul>
+                        <button class="bg-[#f0a824] hover:bg-orange-500 text-slate-900 font-extrabold text-[10px] py-1.5 px-4 rounded shadow transition uppercase mt-2">View More...</button>
+                    </div>
+                </div>
+
+                <!-- Announcement alert box 1 -->
+                <div class="bg-white border border-gray-200 p-4 shadow-sm rounded-md flex items-start space-x-3.5">
+                    <span class="text-xl text-amber-600 mt-0.5">👈</span>
+                    <div class="text-xs text-slate-700">
+                        <p class="leading-relaxed font-semibold">Physical Reporting schedules of IITs/IISc will be updated on Institute profiles. Please check via <a href="#" class="text-blue-600 font-bold underline">"View Details"</a> under the e-Services -> Participating Institutes menu.</p>
+                    </div>
+                </div>
+
+                <!-- Announcement alert box 2 -->
+                <div class="bg-white border border-gray-200 p-4 shadow-sm rounded-md flex items-start space-x-3.5">
+                    <span class="text-xl text-amber-600 mt-0.5">👈</span>
+                    <div class="text-xs text-slate-700 space-y-2">
+                        <p class="leading-relaxed"><strong class="text-slate-900">IIT Kanpur:</strong> IIT Kanpur will admit students for Academic Year 2026-27 through the Olympiad Channel. Detailed information regarding the admission procedure is available at the following link:</p>
+                        <a href="#" class="text-blue-600 font-bold block truncate underline">https://www.iitk.ac.in/doaa/data/Notification-Admission-through-Olympiads2627.pdf</a>
+                        <p class="text-[10px] text-slate-500 font-semibold">Olympiad Admissions Portal: <span class="font-mono font-bold text-slate-700">https://pingala.iitk.ac.in/OL_UGADM/login</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side main column -->
+            <div class="lg:col-span-8 space-y-6">
+                <!-- Introduction Card -->
+                <div class="bg-white p-5 border border-gray-200 shadow-xs rounded-md">
+                    <h3 class="text-lg font-bold text-slate-900 tracking-wide uppercase border-b pb-2 mb-3 font-semibold">Introduction</h3>
+                    <p class="text-xs leading-relaxed text-slate-600 text-justify">
+                        The Joint Seat Allocation Authority (JoSAA) 2026 has been set up by the Ministry of Education [erstwhile Ministry of Human Resources Development (MHRD)] to manage and regulate the joint seat allocation for admissions to 138 Institutes for the academic year 2026-27. This includes 23 IITs, IISc Bengaluru, 31 NITs, IIEST Shibpur, 26 IIITs and 56 Other-Government Funded Technical Institutes (Other-GFTIs). Admission to all the academic programs offered by these Institutes will be made through a single platform.
+                    </p>
+                </div>
+
+                <!-- CANDIDATE ACTIVITY BOARD (NAVY BLUE CARD FROM SCREENSHOT) -->
+                <div class="bg-[#0b2f54] text-white p-6 rounded-md shadow-md border border-slate-800">
+                    <h4 class="text-xs uppercase tracking-wider font-extrabold text-amber-400 mb-3"><i class="fa-solid fa-user-check mr-1"></i> CANDIDATE ACTIVITY BOARD</h4>
+                    <div class="space-y-4">
+                        <button onclick="routeToCounsellingLogin()" class="w-full text-left bg-white text-slate-900 p-4 rounded shadow-sm hover:bg-amber-50/50 transition border-l-4 border-amber-500 block">
+                            <span class="text-xs font-bold block text-[#0d4876]">• View Round 5 Seat Allocation Result for JoSAA 2026</span>
+                            <span class="text-[10px] text-slate-500 block mt-1">Authenticate using your JEE application credentials to check provisional allotment status, willingness configurations, and pay SAF.</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Standard Channel Buttons -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-[#f8fafd] border border-blue-100 p-4 rounded-md flex items-center space-x-3.5 hover:bg-slate-50 cursor-pointer">
+                        <span class="text-amber-600 text-xl">👈</span>
+                        <span class="text-xs font-bold text-slate-800">SEA/FACE/SCOPE channels of admission to IITs <i class="fa-solid fa-external-link text-[10px] text-slate-400 ml-1"></i></span>
+                    </div>
+                    <div class="bg-[#f8fafd] border border-blue-100 p-4 rounded-md flex items-center space-x-3.5 hover:bg-slate-50 cursor-pointer">
+                        <span class="text-amber-600 text-xl">👈</span>
+                        <span class="text-xs font-bold text-slate-800">New UG program BCyber launched at IIT Kanpur. For details, please check <span class="text-blue-600 hover:underline">https://iitk.ac.in/wsais/b-cyber.php</span></span>
+                    </div>
+                </div>
+
+                <!-- Sandes advertisement -->
+                <div class="bg-yellow-50/50 border border-yellow-200 p-3 rounded-md flex items-center justify-between text-xs">
+                    <p class="font-semibold text-slate-700">Install <span class="font-extrabold text-amber-700">"Sandes"</span> to get counselling related messages directly on your smartphone.</p>
+                    <span class="bg-green-600 text-white font-extrabold text-[9px] py-1 px-3 rounded uppercase shrink-0 ml-2">NIC APP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links footer panel -->
+        <section class="bg-[#0a2d54] text-white py-8 px-4 mt-8">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 text-xs text-slate-300">
+                <div>
+                    <h5 class="font-bold text-white uppercase tracking-wider mb-3 border-b border-blue-800 pb-1.5"><i class="fa-solid fa-link mr-1"></i> USEFUL LINKS</h5>
+                    <ul class="space-y-2 font-semibold">
+                        <li class="hover:text-amber-400"><a href="#">• JEE(Advanced)</a></li>
+                        <li class="hover:text-amber-400"><a href="#">• NEUT-2025 Seat Allocation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-white uppercase tracking-wider mb-3 border-b border-blue-800 pb-1.5">&nbsp;</h5>
+                    <ul class="space-y-2 font-semibold">
+                        <li class="hover:text-amber-400"><a href="#">• JEE(Main)</a></li>
+                        <li class="hover:text-amber-400"><a href="#">• CSAB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-white uppercase tracking-wider mb-3 border-b border-blue-800 pb-1.5"><i class="fa-solid fa-headset mr-1"></i> HELPDESK</h5>
+                    <ul class="space-y-2 font-semibold">
+                        <li class="hover:text-amber-400"><a href="#">• FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-white uppercase tracking-wider mb-3 border-b border-blue-800 pb-1.5"><i class="fa-solid fa-circle-info mr-1"></i> KEY POINTS</h5>
+                    <ul class="space-y-2 font-semibold">
+                        <li class="hover:text-amber-400"><a href="#">• Eligibility Criteria</a></li>
+                        <li class="hover:text-amber-400"><a href="#">• Process/Business Rule</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Official Home Footer -->
+        <footer class="bg-[#121820] text-gray-400 text-[11px] py-6 px-4 border-t border-slate-800 text-center shrink-0">
+            <div class="max-w-6xl mx-auto space-y-2.5">
+                <div class="flex justify-center space-x-4 font-bold text-slate-300 mb-2">
+                    <a href="#" class="hover:underline">Terms of Use</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Website Policies</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Help</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Contact Us</a>
+                </div>
+                <p>Content Owned and Managed by Joint Seat Allocation Authority (JoSAA).</p>
+                <p>Developed and Hosted by <span class="text-slate-300 font-bold">National Informatics Centre (NIC)</span>, Ministry of Electronics & Information Technology, Government of India.</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!--          PORTAL VIEW B: SECURE SIGN-IN TERMINAL           -->
+    <!-- ========================================================= -->
+    <div id="view-login" class="hidden flex-grow flex flex-col bg-[#f0f4f8]">
+        <!-- Blue Banner Area -->
+        <div class="bg-[#0a2d54] pt-8 pb-16 px-4 text-center">
+            <div class="max-w-md mx-auto flex flex-col items-center">
+                <!-- Emblem SVGs & JoSAA logos stacked precisely -->
+                <div class="bg-white p-2 rounded-md shadow-md mb-2">
+                    <div class="bg-[#0f5b94] text-white px-5 py-1.5 rounded flex flex-col items-start font-black tracking-tight leading-none select-none">
+                        <span class="text-xl">JoSAA</span>
+                        <span class="text-[5px] text-slate-200">Joint Seat Allocation Authority</span>
+                    </div>
+                </div>
+                <!-- Counselling services stamp -->
+                <div class="bg-white/95 text-slate-800 text-[9px] px-3.5 py-1 rounded font-bold uppercase tracking-widest flex items-center space-x-1 shadow-sm">
+                    <span class="h-2 w-2 rounded-full bg-red-600 inline-block animate-ping"></span>
+                    <span>e-Counselling Services</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registered candidate sign in card overlap -->
+        <div class="px-4 -mt-10 mb-12 flex-grow flex justify-center items-start">
+            <div class="bg-white w-full max-w-lg rounded-xl shadow-2xl border border-slate-200 overflow-hidden">
+                <!-- Header inside sign in card -->
+                <div class="bg-slate-50 border-b border-gray-100 p-5 text-center">
+                    <h2 class="text-md md:text-lg font-black text-slate-800">JoSAA 2026 - Registered Candidate Sign in</h2>
+                </div>
+
+                <div class="p-6 md:p-8 space-y-5">
+                    <!-- App Number Input Field -->
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 uppercase tracking-wide mb-1">JEE (Main) 2026 Application Number/Login Id</label>
+                        <div class="flex items-center">
+                            <input id="input-app-id" type="text" value="260310581502" class="w-full border border-slate-300 rounded-l p-2.5 text-xs font-semibold focus:ring-1 focus:ring-josaaLightBlue outline-none" placeholder="JEE (Main) Application Number/Login Id">
+                            <button onclick="displayInputHelp('app')" class="bg-slate-100 border border-l-0 border-slate-300 rounded-r px-3.5 py-2.5 text-slate-500 hover:bg-slate-200 text-xs" title="Help">
+                                <i class="fa-regular fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 uppercase tracking-wide mb-1">Password</label>
+                        <div class="flex items-center">
+                            <input id="input-password" type="password" value="Lokesh@1008" class="w-full border border-slate-300 rounded-l p-2.5 text-xs focus:ring-1 focus:ring-josaaLightBlue outline-none" placeholder="Password">
+                            <button onclick="displayInputHelp('pwd')" class="bg-slate-100 border border-l-0 border-slate-300 rounded-r px-3.5 py-2.5 text-slate-500 hover:bg-slate-200 text-xs" title="Help">
+                                <i class="fa-regular fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Security Pin Input Field -->
+                    <div>
+                        <label class="block text-[11px] font-extrabold text-slate-700 uppercase tracking-wide mb-1">Security Pin <span class="text-blue-600 lowercase font-medium">(Case Sensitive)</span></label>
+                        <input id="input-security-pin" type="text" class="w-full border border-slate-300 rounded p-2.5 text-xs text-center font-extrabold tracking-widest focus:ring-1 focus:ring-josaaLightBlue outline-none uppercase" placeholder="Enter Security Pin">
+                    </div>
+
+                    <!-- Radio option inputs -->
+                    <div class="flex space-x-6 text-xs text-slate-700 font-bold justify-center">
+                        <label class="flex items-center space-x-2 cursor-pointer">
+                            <input type="radio" name="auth-captcha-opt" checked class="text-[#0d4876]">
+                            <span>Image Captcha</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer opacity-65">
+                            <input type="radio" name="auth-captcha-opt" disabled>
+                            <span>Audio Captcha</span>
+                        </label>
+                    </div>
+
+                    <!-- CAPTCHA Red Slanted Emulation (matching image 1000149979.png) -->
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded flex justify-center items-center space-x-4">
+                        <span class="text-xs text-slate-500 font-bold">Security Pin</span>
+                        <div class="captcha-scanlines px-6 py-2 border border-red-200 rounded text-red-700 italic font-bold tracking-widest text-2xl font-serif select-none relative" id="captcha-display-box">
+                            911758
+                        </div>
+                        <button onclick="refreshCaptchaPin()" class="p-2 bg-white hover:bg-slate-100 border border-slate-300 rounded text-green-700 shadow-sm transition" title="Refresh Security Pin">
+                            <i class="fa-solid fa-sync text-sm"></i>
+                        </button>
+                    </div>
+
+                    <!-- Login verification message box -->
+                    <div id="login-error-message" class="hidden p-3 bg-red-50 border border-red-200 text-red-700 rounded text-xs font-semibold text-center">
+                        Invalid CAPTCHA code or authentication password. Please try again.
+                    </div>
+
+                    <!-- Login Button -->
+                    <button onclick="verifySignonProcess()" class="w-full py-3 bg-[#0d5ca2] hover:bg-blue-800 text-white font-bold text-sm tracking-wide transition rounded shadow uppercase">
+                        Login
+                    </button>
+
+                    <!-- Forgot password link / autofill shortcut -->
+                    <div class="text-right">
+                        <button onclick="fastAutofillCredentials()" class="text-xs text-[#0d5ca2] font-semibold hover:underline"><i class="fa-solid fa-magic mr-1"></i> Quick Autofill Lokesh Details</button>
+                    </div>
+
+                    <!-- Security Accordion -->
+                    <div class="border border-slate-200 rounded-md overflow-hidden text-xs">
+                        <details class="group">
+                            <summary class="bg-slate-50 p-3 flex justify-between items-center font-bold text-slate-700 cursor-pointer select-none">
+                                <span>Important Instructions for Security</span>
+                                <i class="fa-solid fa-chevron-down transition-transform group-open:rotate-180 text-slate-400"></i>
+                            </summary>
+                            <div class="p-3 bg-white border-t border-slate-100 text-slate-500 space-y-2 leading-relaxed">
+                                <p>• Always sign out using the official "Logout" button once your activity concludes.</p>
+                                <p>• Keep your password strictly private and change it frequently.</p>
+                                <p>• JoSAA database administrators will never solicit your login details via email or call.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page Footer links -->
+        <footer class="bg-white border-t border-slate-200 text-center py-6 px-4 shrink-0">
+            <div class="max-w-6xl mx-auto space-y-4">
+                <div class="text-[11px] font-extrabold text-[#0d5ca2] flex flex-wrap justify-center space-x-4">
+                    <a href="#" class="hover:underline">Terms and Conditions</a>
+                    <span>/</span>
+                    <a href="#" class="hover:underline">Hyperlink Policy</a>
+                    <span>/</span>
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <span>/</span>
+                    <a href="#" class="hover:underline">Copyright Policy</a>
+                    <span>/</span>
+                    <a href="#" class="hover:underline">Disclaimer</a>
+                </div>
+                <p class="text-[10px] text-slate-500 font-semibold max-w-xl mx-auto leading-relaxed">
+                    This site is designed and hosted by NIC and the contents are provided by JoSAA.<br>
+                    For any further information, please contact JoSAA.
+                </p>
+                <!-- Partner Stamps -->
+                <div class="flex items-center justify-center space-x-6 pt-2">
+                    <div class="text-center px-3 py-1 bg-slate-100 rounded text-[9px] font-black text-slate-500 tracking-wider">
+                        e-Counselling Services
+                    </div>
+                    <div class="h-7 w-12 bg-sky-700 text-white rounded flex items-center justify-center font-black text-sm select-none shadow-sm" title="NIC Stamp">
+                        NIC
+                    </div>
+                    <div class="h-7 w-14 bg-slate-800 text-white rounded flex items-center justify-center text-[8px] font-extrabold uppercase p-1 select-none shadow-sm" title="Digital India">
+                        Digital India
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!--          PORTAL VIEW C: CANDIDATE DASHBOARD               -->
+    <!-- ========================================================= -->
+    <div id="view-dashboard" class="hidden flex-grow flex flex-col bg-[#f0f4f8]">
+        <!-- Dashboard Header -->
+        <header class="bg-white border-b border-gray-200 py-3.5 px-4 md:px-8 shrink-0">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-3.5 md:space-y-0">
+                <div class="flex items-center space-x-3.5">
+                    <!-- JoSAA square stamp -->
+                    <div class="bg-josaaLightBlue text-white px-5 py-2 rounded text-center leading-none shadow-sm shrink-0 select-none">
+                        <span class="font-black text-xl tracking-tighter block">JoSAA</span>
+                        <span class="text-[5px] text-slate-200 uppercase tracking-tighter block mt-0.5">Joint Seat Allocation</span>
+                    </div>
+                    <div>
+                        <h1 class="text-md md:text-lg font-black text-slate-800 leading-tight">Joint Seat Allocation Authority 2026</h1>
+                        <p class="text-[10px] md:text-xs text-slate-500 font-semibold">IITs, IISc, NITs, IIEST, IIITs and Other-GFTIs for the Academic Year 2026-27</p>
+                    </div>
+                </div>
+
+                <!-- Right eCounselling services brand badge exactly matching screenshot -->
+                <div class="flex items-center space-x-2 shrink-0">
+                    <div class="border border-red-200 rounded p-1 px-4 bg-red-50/50 flex items-center space-x-1.5">
+                        <span class="h-5 w-5 bg-red-600 rounded-full flex items-center justify-center text-white text-[10px] font-black">e</span>
+                        <div class="text-left leading-none">
+                            <span class="text-[7px] uppercase tracking-wider text-slate-400 block font-bold">ECOUNSELLING SERVICES</span>
+                            <span class="text-[8px] font-black text-slate-800 block">Simplifying Admission</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dark Navigation Strip (Match image 1000150017.png perfectly) -->
+        <div class="bg-[#1a202c] text-white text-[11px] font-bold py-2 px-4 md:px-8 flex justify-between items-center shadow-md shrink-0">
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleSidebarDrawer()" class="text-white hover:text-orange-400 focus:outline-none md:hidden text-base">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="#" onclick="switchDashboardTab('activity-status')" class="hover:text-orange-400 flex items-center"><i class="fa-solid fa-folder-open mr-1.5 text-orange-400"></i> Choice Dashboard</a>
+                <span class="text-slate-700">|</span>
+                <a href="#" class="hover:text-orange-400">Contact Us</a>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <span class="text-orange-400 font-extrabold uppercase" id="dashboard-candidate-name">LOKESH NILESH BHAVSAR</span>
+                <i class="fa-solid fa-circle-user text-slate-400 text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Warning Expiration Strip (Matches screenshot pink background and countdown 19:37) -->
+        <div class="bg-[#fdf2f2] border-b border-[#fee2e2] px-4 md:px-8 py-2 flex flex-col md:flex-row justify-between items-start md:items-center text-xs space-y-2 md:space-y-0 shrink-0">
+            <div class="text-red-700 font-bold flex items-center space-x-1.5">
+                <span class="animate-pulse h-2 w-2 rounded-full bg-red-600"></span>
+                <span>Your current session will be expired within :</span>
+                <!-- Soft red timer block matches perfectly -->
+                <span id="session-countdown-pill" class="font-mono text-sm bg-[#fde2e2] border border-red-200 text-red-800 px-2 py-0.5 rounded font-black tracking-wider">19:37</span>
+                <span>minute</span>
+            </div>
+            
+            <div class="text-slate-600 font-semibold space-y-1 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row text-[11px]">
+                <div>Round Number : <span class="font-black text-slate-900">5</span></div>
+                <span class="hidden sm:inline text-slate-300">|</span>
+                <div>JEE (Main) Application Number: <span class="font-mono font-black text-slate-900">260310581502</span></div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Split Pane Layout -->
+        <div class="flex-grow flex relative overflow-hidden">
+            
+            <!-- Left Sidebar Navigation Panel (Matching NILESH / 260310581502 Sidebar styling) -->
+            <aside id="dashboard-sidebar-drawer" class="w-64 bg-[#202731] text-slate-300 shrink-0 flex flex-col border-r border-slate-800 absolute md:static top-0 bottom-0 left-0 z-40 transition-transform duration-300 md:translate-x-0 -translate-x-full">
+                <!-- Candidate identity box -->
+                <div class="p-6 text-center border-b border-slate-800 bg-[#1a222c]">
+                    <div class="h-16 w-16 bg-slate-500 rounded-full mx-auto border-2 border-slate-600 flex items-center justify-center text-slate-100 text-2xl mb-2.5 shadow-inner select-none">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-extrabold text-xs text-white uppercase tracking-wider">NILESH</h3>
+                    <p class="text-[10px] text-slate-400 font-mono mt-1">JEE(Main) AppNo: <span class="font-bold">260310581502</span></p>
+                </div>
+
+                <!-- Available Services lists -->
+                <div class="flex-grow overflow-y-auto">
+                    <div class="bg-[#1a222c] px-4 py-2 text-[10px] font-black uppercase text-slate-500 tracking-wider">Available Services</div>
+                    <nav class="p-2 space-y-1 text-xs">
+                        <button onclick="switchDashboardTab('activity-status')" class="dashboard-sidebar-btn w-full text-left p-3 rounded font-bold hover:bg-slate-800 hover:text-white flex items-center space-x-2.5 transition text-white bg-josaaLightBlue">
+                            <i class="fa-solid fa-award text-amber-400"></i>
+                            <span>Seat Allotment Result</span>
+                        </button>
+                        <button onclick="openLetterModalPreview()" class="w-full text-left p-3 rounded font-bold hover:bg-slate-800 hover:text-white flex items-center space-x-2.5 transition text-slate-400">
+                            <i class="fa-solid fa-file-pdf text-red-500"></i>
+                            <span class="text-white">Download Intimation Letter</span>
+                            <span class="bg-amber-500 text-slate-950 font-black text-[7px] px-1 py-0.5 rounded ml-auto">NEW</span>
+                        </button>
+                        <button onclick="switchDashboardTab('willingness')" class="dashboard-sidebar-btn w-full text-left p-3 rounded font-bold hover:bg-slate-800 hover:text-white flex items-center space-x-2.5 transition text-slate-400">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span>Submitted Willingness</span>
+                        </button>
+                        <button onclick="switchDashboardTab('fee-payment')" class="dashboard-sidebar-btn w-full text-left p-3 rounded font-bold hover:bg-slate-800 hover:text-white flex items-center space-x-2.5 transition text-slate-400">
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <span>Partial Admission Fee</span>
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Logout trigger -->
+                <div class="p-3 bg-[#1a222c] border-t border-slate-800">
+                    <button onclick="terminateSessionLogout()" class="w-full py-2 bg-red-700/80 hover:bg-red-700 text-white font-extrabold text-[11px] rounded transition flex items-center justify-center space-x-1">
+                        <i class="fa-solid fa-power-off"></i>
+                        <span>Exit Portal</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content panel -->
+            <main class="flex-grow p-4 md:p-8 overflow-y-auto bg-[#f0f4f8]">
+                
+                <!-- SUB PANELS: SEAT ALLOTMENT ACTIVITY STATUS (IMAGE 1000150017.png) -->
+                <div id="tab-activity-status" class="dashboard-tab-panel max-w-5xl mx-auto space-y-6">
+                    <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                        
+                        <!-- Header matching image text exactly -->
+                        <div class="p-5 border-b border-gray-100 bg-slate-50/50">
+                            <h2 class="text-base md:text-lg font-black text-slate-800">Seat Allocation Activity Status for Round : 5</h2>
+                            <p class="text-[11px] text-slate-500 mt-1">Please complete all mandatory parameters below to guarantee lock on your allotted seat.</p>
+                        </div>
+
+                        <!-- Table Grid matching image style exactly -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse official-table">
+                                <thead>
+                                    <tr class="bg-[#222e3c] text-white text-xs font-bold uppercase tracking-wider">
+                                        <th class="p-4 w-1/2">Activities</th>
+                                        <th class="p-4 text-center">Is Mandatory?</th>
+                                        <th class="p-4 text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <!-- View Result row -->
+                                    <tr>
+                                        <td class="font-bold text-slate-700 hover:text-josaaLightBlue cursor-pointer" onclick="displayAllotmentParametersModal()">
+                                            View Seat Allotment Result
+                                        </td>
+                                        <td class="text-center text-slate-500 text-xs font-semibold">Mandatory</td>
+                                        <td class="text-center">
+                                            <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-green-100 text-green-800 text-[11px] font-black rounded-full">
+                                                <i class="fa-solid fa-check-circle"></i>
+                                                <span>Completed</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <!-- Willingness Submission Row -->
+                                    <tr>
+                                        <td class="font-bold text-slate-700">Willingness Submission</td>
+                                        <td class="text-center text-slate-500 text-xs font-semibold">Mandatory</td>
+                                        <td class="text-center">
+                                            <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-green-100 text-green-800 text-[11px] font-black rounded-full">
+                                                <i class="fa-solid fa-check-circle"></i>
+                                                <span>Completed</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <!-- Upload Docs Row -->
+                                    <tr>
+                                        <td class="font-bold text-slate-700">Upload Required Documents</td>
+                                        <td class="text-center text-slate-500 text-xs font-semibold">Mandatory</td>
+                                        <td class="text-center">
+                                            <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-green-100 text-green-800 text-[11px] font-black rounded-full">
+                                                <i class="fa-solid fa-check-circle"></i>
+                                                <span>Completed</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <!-- Partial Fee Row (UPDATED TO PARTIAL SEAT ACCEPTANCE FEE ₹45,000) -->
+                                    <tr>
+                                        <td class="font-bold text-slate-700">
+                                            <span>Partial Admission Fee Payment (₹45,000)</span>
+                                        </td>
+                                        <td class="text-center text-slate-500 text-xs font-semibold">Mandatory</td>
+                                        <td class="text-center" id="fee-badge-container">
+                                            <!-- Interactive Red Pill button to simulate payment -->
+                                            <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-red-100 text-red-800 text-[11px] font-black rounded-full animate-pulse cursor-pointer" onclick="switchDashboardTab('fee-payment')">
+                                                <i class="fa-solid fa-times-circle"></i>
+                                                <span>Incomplete</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Admission Letter download option box -->
+                        <div class="p-5 bg-blue-50/50 border-t border-blue-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="text-xs text-slate-600 flex items-start space-x-3">
+                                <span class="text-2xl text-blue-600"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                                <div>
+                                    <h4 class="font-extrabold text-blue-900 uppercase">Provisional Seat Acceptance Receipt & Letter</h4>
+                                    <p class="mt-0.5 text-slate-500 text-[11px]">Download official print-ready proof of ₹45,000 partial fee settlement.</p>
+                                </div>
+                            </div>
+                            <button onclick="openLetterModalPreview()" class="bg-[#0f5b94] hover:bg-blue-800 text-white font-extrabold text-xs py-2 px-6 rounded shadow transition shrink-0 flex items-center">
+                                <i class="fa-solid fa-download mr-1.5"></i> Download Letter
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- SUB PANEL: WILLINGNESS VIEW (UPDATED TO LATEST SELECTION: FLOAT) -->
+                <div id="tab-willingness" class="dashboard-tab-panel hidden max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-md font-bold text-slate-800 border-b pb-3 mb-4 flex items-center">
+                            <i class="fa-solid fa-sliders text-amber-500 mr-2"></i> Allocation Willingness Submission
+                        </h3>
+                        <p class="text-xs text-slate-500 mb-6">Willingness locked automatically based on Round 5 configuration timelines.</p>
+                        
+                        <div class="p-4 border border-blue-200 bg-blue-50/50 rounded-lg text-xs leading-relaxed">
+                            <div class="flex items-start space-x-3">
+                                <div class="h-4 w-4 rounded-full bg-blue-600 mt-0.5 flex items-center justify-center shrink-0">
+                                    <div class="h-2 w-2 rounded-full bg-white"></div>
+                                </div>
+                                <div>
+                                    <span class="font-extrabold text-blue-900 uppercase block">FLOAT (Current Locked State)</span>
+                                    <p class="text-slate-600 mt-1">Candidate accepts the current allotted VNIT Nagpur Program (Electrical and Electronics Engineering), but wishes to look for better program configurations across any other premier institutes during subsequent CSAB special rounds.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB PANEL: PARTIAL ADMISSION FEE GATEWAY (₹45,000) -->
+                <div id="tab-fee-payment" class="dashboard-tab-panel hidden max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="text-md font-bold text-slate-800 border-b pb-3 mb-4 flex items-center">
+                            <i class="fa-solid fa-credit-card text-emerald-600 mr-2"></i> Partial Admission Fee (PAF) Payment
+                        </h3>
+                        
+                        <div id="payment-box-active" class="space-y-4">
+                            <div class="bg-red-50 border border-red-200 p-4 rounded text-xs text-red-900 font-semibold">
+                                <span class="font-black text-sm block">PAF Fee Payment Required</span>
+                                <p class="mt-1">Please pay the mandatory **Partial Admission Fee of ₹45,000** to secure and finalize your seat allotment registration on central NIC servers.</p>
+                            </div>
+
+                            <div class="border rounded text-xs text-slate-700">
+                                <div class="bg-slate-50 p-3 border-b font-bold">Transaction Summary details</div>
+                                <div class="p-4 space-y-2.5">
+                                    <div class="flex justify-between">
+                                        <span>Candidate Name:</span>
+                                        <span class="font-bold text-slate-800">LOKESH NILESH BHAVSAR</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Allotted College:</span>
+                                        <span class="font-semibold text-slate-800">VNIT Nagpur</span>
+                                    </div>
+                                    <div class="flex justify-between font-bold text-sm border-t pt-2.5">
+                                        <span>Partial Fee Payable:</span>
+                                        <span class="text-red-700">₹45,000.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="completeSimulatedPayment()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded transition uppercase shadow">
+                                <i class="fa-solid fa-lock mr-1.5"></i> Pay Secure Fee ₹45,000
+                            </button>
+                        </div>
+
+                        <!-- Success view -->
+                        <div id="payment-box-completed" class="hidden p-6 bg-green-50 border border-green-200 rounded text-center space-y-3">
+                            <div class="h-12 w-12 bg-green-100 text-green-700 rounded-full flex items-center justify-center text-xl mx-auto shadow-inner">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <h4 class="font-bold text-green-900 text-sm">₹45,000 Partial Admission Fee Settled successfully!</h4>
+                            <p class="text-xs text-green-700 font-medium">System Reference ID: <span class="font-mono font-bold text-slate-900">TXN-PAF-260310581502-S</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Secure dashboard footer stamp -->
+        <footer class="bg-[#edece8] border-t border-slate-300 text-slate-600 text-center py-4 text-xs font-semibold shrink-0">
+            <p>This site is designed and hosted by NIC and the contents are provided by JoSAA.</p>
+            <p class="text-[10px] text-slate-400 mt-0.5">Secure Session Database Tunnel Protocol: NIC-AES256</p>
+        </footer>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!--          MODAL PANEL: PRINT PROVISIONAL RECEIPT LETTER    -->
+    <!--          (EXACT SAME COPY OF seat acceptence letter.pdf) -->
+    <!-- ========================================================= -->
+    <div id="modal-intimation-letter" class="hidden fixed inset-0 z-50 bg-black/65 flex justify-center items-center p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-4xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="bg-[#0c3961] text-white p-4 flex justify-between items-center shrink-0">
+                <span class="text-xs font-bold uppercase"><i class="fa-solid fa-file-contract mr-1"></i> Provisional Seat Allotment Letter (JoSAA 2026)</span>
+                <button onclick="closeLetterModalPreview()" class="text-white hover:text-orange-400 font-extrabold text-sm"><i class="fa-solid fa-times text-lg"></i></button>
+            </div>
+
+            <!-- Scrollable receipt layout space -->
+            <div class="p-6 bg-slate-50 overflow-y-auto flex-grow" id="print-area-container">
+                <div class="bg-white border border-slate-400 p-8 shadow-sm rounded-none relative max-w-3xl mx-auto text-[11px] text-[#111]" id="printable-receipt-letter" style="font-family: Arial, sans-serif;">
+                    
+                    <!-- Header Section of the letter -->
+                    <div class="text-center pb-4 mb-4 relative border-b border-gray-300">
+                        <h2 class="font-bold text-[14px] text-slate-900">Joint Seat Allocation Authority 2026</h2>
+                        <p class="text-[9px] text-slate-600 font-semibold uppercase">IITS, NITS, IIITs, IIEST and Other-GFTIs for the Academic Year 2026-27</p>
+                        <p class="font-bold text-[12px] text-slate-800 mt-1">Provisional Seat Allotment Letter</p>
+                        
+                        <!-- barcode graphic representation -->
+                        <div class="absolute top-0 right-0 flex flex-col items-center">
+                            <div class="h-6 w-24 bg-slate-950 flex p-0.5 space-x-0.5 select-none">
+                                <div class="w-1 bg-white h-full"></div>
+                                <div class="w-2 bg-white h-full"></div>
+                                <div class="w-0.5 bg-white h-full"></div>
+                                <div class="w-1.5 bg-white h-full"></div>
+                                <div class="w-2 bg-white h-full"></div>
+                            </div>
+                            <span class="text-[6px] font-mono font-bold text-slate-600 mt-0.5">260310581502</span>
+                        </div>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <div class="mb-4">
+                        <h3 class="font-bold text-[11px] bg-slate-100 p-1.5 border border-gray-300 uppercase">Personal Details</h3>
+                        <table class="w-full border-collapse border border-gray-300 text-[10px] mt-1">
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50 w-1/4">JEE(Main) Application No.</td>
+                                    <td class="border border-gray-300 p-1.5 w-1/4 font-mono font-bold">260310581502</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50 w-1/4">JEE(Advanced) Roll No</td>
+                                    <td class="border border-gray-300 p-1.5 w-1/4 font-mono">261142065</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Candidate's Name</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold uppercase" colspan="3">LOKESH NILESH BHAVSAR</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Date of Birth</td>
+                                    <td class="border border-gray-300 p-1.5">16-10-2008</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">State of Eligibility</td>
+                                    <td class="border border-gray-300 p-1.5">MAHARASHTRA</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Gender</td>
+                                    <td class="border border-gray-300 p-1.5 uppercase">MALE</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Person with Disability (PWD)</td>
+                                    <td class="border border-gray-300 p-1.5">NO</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Category</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold">OBC-NCL</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Nationality</td>
+                                    <td class="border border-gray-300 p-1.5">INDIAN</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Rank Details -->
+                    <div class="mb-4">
+                        <h3 class="font-bold text-[11px] bg-slate-100 p-1.5 border border-gray-300 uppercase">Rank(s)</h3>
+                        <table class="w-full border-collapse border border-gray-300 text-[10px] mt-1 text-center">
+                            <thead>
+                                <tr class="bg-slate-50 font-bold">
+                                    <th class="border border-gray-300 p-1.5">Rank List</th>
+                                    <th class="border border-gray-300 p-1.5">JEE(Main) B.E./B. Tech.</th>
+                                    <th class="border border-gray-300 p-1.5">JEE(Main) B.Arch.</th>
+                                    <th class="border border-gray-300 p-1.5">JEE(Main) B.Planning</th>
+                                    <th class="border border-gray-300 p-1.5">JEE(Advanced)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50 text-left">CRL Rank</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold">25815</td>
+                                    <td class="border border-gray-300 p-1.5">-</td>
+                                    <td class="border border-gray-300 p-1.5">-</td>
+                                    <td class="border border-gray-300 p-1.5">-</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50 text-left">OBC-NCL Rank</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold text-blue-800">6265</td>
+                                    <td class="border border-gray-300 p-1.5">-</td>
+                                    <td class="border border-gray-300 p-1.5">-</td>
+                                    <td class="border border-gray-300 p-1.5">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Allotment Details -->
+                    <div class="mb-4">
+                        <h3 class="font-bold text-[11px] bg-slate-100 p-1.5 border border-gray-300 uppercase">Allotment Details</h3>
+                        <table class="w-full border-collapse border border-gray-300 text-[10px] mt-1">
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50 w-1/4">Round No.</td>
+                                    <td class="border border-gray-300 p-1.5 w-1/4 font-bold text-red-600">5</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50 w-1/4">Choice No.</td>
+                                    <td class="border border-gray-300 p-1.5 w-1/4 font-mono font-bold">209</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Institute</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold text-slate-800" colspan="3">VISVESVARAYA NATIONAL INSTITUTE OF TECHNOLOGY, NAGPUR</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Academic Program</td>
+                                    <td class="border border-gray-300 p-1.5 font-semibold text-slate-700" colspan="3">ELECTRICAL AND ELECTRONICS ENGINEERING (4 YEARS, BACHELOR OF TECHNOLOGY)</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Allotted Category</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold">OBC-NCL</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Allotted Quota</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold">HOME STATE</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Allotted Gender</td>
+                                    <td class="border border-gray-300 p-1.5">GENDER-NEUTRAL</td>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Allotted based on</td>
+                                    <td class="border border-gray-300 p-1.5 font-semibold">JEE(MAIN) 2026 (B.E./B TECH.)</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-300 p-1.5 font-bold bg-slate-50">Rank used for Allotment</td>
+                                    <td class="border border-gray-300 p-1.5 font-mono font-bold" colspan="3">6265</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Letter Body Text -->
+                    <div class="mt-4 text-[10px] space-y-2 leading-relaxed text-slate-700">
+                        <p class="font-bold">Dear Candidate,</p>
+                        <p>Based on your rank, choices of programs and willingness for upgradation, you have been provisionally allotted a seat in the academic program and Institute shown above.</p>
+                        <ol class="list-decimal pl-4 space-y-1 font-medium">
+                            <li><strong class="text-blue-900">Choice Upgraded.</strong></li>
+                            <li>Document verification status: <strong class="text-green-700">Completed.</strong></li>
+                            <li>You must deposit the Partial Admission Fee latest by 17:00 HRS of JULY 24, 2026 to SECURE the admission in the allotted Institute otherwise the allotted seat will be CANCELLED. This Partial Admission Fee (<span class="font-bold">Rs. 45,000/-</span> for GEN, GEN-EWS, OBC-NCL and Rs. 20,000/- for SC, ST, PwD candidates) must be deposited on JoSAA portal using your login credentials. <span class="font-bold text-green-700" id="receipt-letter-paf-note">(Status: Incomplete/Action Needed)</span></li>
+                            <li>For further updates, visit JoSAA website (https://josaa.nic.in)</li>
+                        </ol>
+                    </div>
+
+                    <!-- Important Instructions -->
+                    <div class="mt-4 border-t border-gray-300 pt-3">
+                        <h4 class="font-bold text-[10px] uppercase text-red-700">Important Instructions:</h4>
+                        <p class="text-[9.5px] mt-1 text-slate-600 font-semibold">1. Forged Documents: At the time of admission, if the documents you submit are found to be forged / fake, then the seat allotted will be cancelled.</p>
+                    </div>
+
+                    <!-- Computer Generated Signature (Removed K.S Pandey Seal) -->
+                    <div class="pt-6 mt-6 border-t border-gray-300 text-left text-[10px] text-slate-500 font-sans leading-relaxed">
+                        <p>Generated On: JULY 23, 2026 12:15 PM</p>
+                        <p class="mt-0.5">(Computer generated letter.)</p>
+                        <p class="mt-2 text-[9px] font-bold text-slate-400 font-mono">JoSAA 2021</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Print Actions bar -->
+            <div class="bg-slate-50 p-4 border-t border-slate-200 flex justify-end space-x-3 shrink-0">
+                <button onclick="window.print()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs py-2 px-5 rounded transition">
+                    <i class="fa-solid fa-print mr-1.5"></i> Print Receipt
+                </button>
+                <button onclick="closeLetterModalPreview()" class="bg-[#0c3961] hover:bg-blue-800 text-white font-bold text-xs py-2 px-5 rounded transition">
+                    Close Preview
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!--          MODAL PANEL: ALLOTMENT SUMMARY PARAMETERS        -->
+    <!-- ========================================================= -->
+    <div id="modal-allotment-summary" class="hidden fixed inset-0 z-50 bg-black/65 flex justify-center items-center p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-3xl rounded-xl shadow-2xl overflow-hidden my-8 border-t-4 border-[#222e3c]">
+            <div class="p-5 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="text-base font-extrabold text-slate-800">Provisional Seat Allotment Parameters</h3>
+                <button onclick="closeAllotmentParametersModal()" class="text-slate-400 hover:text-slate-600 text-lg"><i class="fa-solid fa-times"></i></button>
+            </div>
+
+            <div class="p-6">
+                <!-- Recreated Table exactly matching 1000149993.png specs -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse official-table text-xs">
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc] w-1/4">Round No.</td>
+                                <td class="font-bold text-slate-900" colspan="3">5</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc]">Choice No.</td>
+                                <td class="font-mono text-slate-900" colspan="3">26</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc]">Institute Allotted</td>
+                                <td class="font-bold text-slate-900" colspan="3">Visvesvaraya National Institute of Technology Nagpur</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc]">Academic Program Allotted</td>
+                                <td class="text-slate-900 font-semibold" colspan="3">Electrical and Electronics Engineering(4 Years Bachelor of Technology)</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc] w-1/4">Allotted Category</td>
+                                <td class="font-bold text-slate-900 w-1/4">OBC-NCL</td>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc] w-1/4">Allotted Quota</td>
+                                <td class="font-bold text-slate-900 w-1/4">Home State</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc]">Seat Pool</td>
+                                <td class="font-bold text-slate-900">Gender-Neutral</td>
+                                <td class="font-bold text-slate-800 bg-[#fafbfc]">Allotted based on</td>
+                                <td class="text-slate-900 font-semibold">JEE(Main) (B.E / B.Tech.)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-4 border-t flex justify-end space-x-3 shrink-0">
+                <button onclick="closeAllotmentParametersModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2 px-5 rounded">
+                    Close Preview
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!--          MODAL PANEL: HELP ALERT INFO BOX                 -->
+    <!-- ========================================================= -->
+    <div id="modal-input-help" class="hidden fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+        <div class="bg-white max-w-sm w-full rounded-xl shadow-2xl overflow-hidden border-t-4 border-josaaNavy">
+            <div class="p-5 space-y-3">
+                <h4 class="font-black text-slate-800 text-sm uppercase" id="help-info-title">Help Info</h4>
+                <p id="help-info-text" class="text-xs text-slate-600 leading-relaxed">Description detail.</p>
+                <div class="text-right pt-2">
+                    <button onclick="closeInputHelpModal()" class="bg-slate-900 text-white hover:bg-slate-800 text-[11px] font-bold py-1.5 px-4 rounded">
+                        Dismiss
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!--               SYSTEM NAVIGATIONAL JAVASCRIPT              -->
+    <!-- ========================================================= -->
+    <script>
+        // Set candidate detail variables
+        let appCountdownTimerId = null;
+        let systemMinutesRemaining = 19;
+        let systemSecondsRemaining = 37;
+        let staticVerificationCaptcha = "911758";
+        let isFeeTransactionCompleted = false;
+
+        // Redirects public home page to secure candidate log-in
+        function routeToCounsellingLogin() {
+            changeScreenView('login');
+        }
+
+        // Core system routing manager
+        function changeScreenView(viewId) {
+            // Hide all layout views
+            document.getElementById('view-homepage').classList.add('hidden');
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-dashboard').classList.add('hidden');
+
+            // Display active target screen view
+            document.getElementById(`view-${viewId}`).classList.remove('hidden');
+
+            // Trigger dynamic timer countdown if candidate logs into dashboard
+            if (viewId === 'dashboard') {
+                initiateSessionCountdownTimer();
+            } else {
+                if (appCountdownTimerId) clearInterval(appCountdownTimerId);
+            }
+
+            // Scroll position reset
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Slanted captcha pin generator (image 1000149979.png emulation)
+        function refreshCaptchaPin() {
+            const possibleChars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            let generatedCode = "";
+            for (let i = 0; i < 6; i++) {
+                generatedCode += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));
+            }
+            staticVerificationCaptcha = generatedCode;
+            document.getElementById('captcha-display-box').innerText = generatedCode;
+        }
+
+        // Quick Autofill credentials button helper
+        function fastAutofillCredentials() {
+            document.getElementById('input-app-id').value = "260310581502";
+            document.getElementById('input-password').value = "Lokesh@1008";
+            document.getElementById('input-security-pin').value = staticVerificationCaptcha;
+            document.getElementById('login-error-message').classList.add('hidden');
+        }
+
+        // Perform authentication steps
+        function verifySignonProcess() {
+            const typedAppId = document.getElementById('input-app-id').value.trim();
+            const typedPwd = document.getElementById('input-password').value.trim();
+            const typedPin = document.getElementById('input-security-pin').value.trim().toUpperCase();
+            const errorLabel = document.getElementById('login-error-message');
+
+            errorLabel.classList.add('hidden');
+
+            // Quick valid check
+            if (typedAppId === "260310581502" && typedPwd === "Lokesh@1008") {
+                if (typedPin === staticVerificationCaptcha) {
+                    // Success access
+                    changeScreenView('dashboard');
+                } else {
+                    errorLabel.innerText = "Error: Security CAPTCHA pin verification failed.";
+                    errorLabel.classList.remove('hidden');
+                    refreshCaptchaPin();
+                }
+            } else {
+                errorLabel.innerText = "Error: Invalid application configuration ID or secure password.";
+                errorLabel.classList.remove('hidden');
+                refreshCaptchaPin();
+            }
+        }
+
+        // Live countdown session timer simulation starting exactly at (19:37)
+        function initiateSessionCountdownTimer() {
+            systemMinutesRemaining = 19;
+            systemSecondsRemaining = 37;
+
+            const timerBox = document.getElementById('session-countdown-pill');
+            if (appCountdownTimerId) clearInterval(appCountdownTimerId);
+
+            appCountdownTimerId = setInterval(function() {
+                if (systemSecondsRemaining === 0) {
+                    if (systemMinutesRemaining === 0) {
+                        clearInterval(appCountdownTimerId);
+                        alert("Secure candidate session expired. Re-authenticate to access.");
+                        terminateSessionLogout();
+                        return;
+                    }
+                    systemMinutesRemaining--;
+                    systemSecondsRemaining = 59;
+                } else {
+                    systemSecondsRemaining--;
+                }
+
+                // Format numbers to match (19:37)
+                const dispSec = systemSecondsRemaining < 10 ? "0" + systemSecondsRemaining : systemSecondsRemaining;
+                timerBox.innerText = `${systemMinutesRemaining}:${dispSec}`;
+            }, 1000);
+        }
+
+        // Dashboard sub-panels layout navigator
+        function switchDashboardTab(tabIdName) {
+            // Hide all panels
+            document.querySelectorAll('.dashboard-tab-panel').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            // Show target
+            document.getElementById(`tab-${tabIdName}`).classList.remove('hidden');
+
+            // Reset navigation menu styling parameters
+            document.querySelectorAll('.dashboard-sidebar-btn').forEach(btn => {
+                btn.classList.remove('bg-josaaLightBlue', 'text-white');
+                btn.classList.add('text-slate-400');
+            });
+
+            // Set current target active style
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('bg-josaaLightBlue', 'text-white');
+                event.currentTarget.classList.remove('text-slate-400');
+            }
+
+            // Close mobile menu drawer automatically on click
+            document.getElementById('dashboard-sidebar-drawer').classList.add('-translate-x-full');
+        }
+
+        // Complete Simulated Payment of PAF (₹45,000)
+        function completeSimulatedPayment() {
+            isFeeTransactionCompleted = true;
+
+            // Change activity status badge inside table
+            const feeCell = document.getElementById('fee-badge-container');
+            feeCell.innerHTML = `
+                <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-green-100 text-green-800 text-[11px] font-black rounded-full">
+                    <i class="fa-solid fa-check-circle"></i>
+                    <span>Completed</span>
+                </span>
+            `;
+
+            // Swap transaction container panels
+            document.getElementById('payment-box-active').classList.add('hidden');
+            document.getElementById('payment-box-completed').classList.remove('hidden');
+
+            // Update Allotment PDF Letter status text dynamically
+            document.getElementById('receipt-letter-fee-status').innerText = "PAID / VERIFIED (₹45,000)";
+            document.getElementById('receipt-letter-fee-status').className = "font-black text-green-700";
+            document.getElementById('receipt-letter-paf-note').innerText = "(Status: Fully Verified & Paid)";
+            document.getElementById('receipt-letter-paf-note').className = "font-bold text-green-700";
+
+            // Redirect automatically back to status overview
+            setTimeout(function() {
+                switchDashboardTab('activity-status');
+            }, 1000);
+        }
+
+        // Parameter summary details modal togglers
+        function displayAllotmentParametersModal() {
+            document.getElementById('modal-allotment-summary').classList.remove('hidden');
+        }
+
+        // Close allotment modal
+        function closeAllotmentParametersModal() {
+            document.getElementById('modal-allotment-summary').classList.add('hidden');
+        }
+
+        // Intimation letter modal togglers
+        function openLetterModalPreview() {
+            document.getElementById('modal-intimation-letter').classList.remove('hidden');
+        }
+
+        function closeLetterModalPreview() {
+            document.getElementById('modal-intimation-letter').classList.add('hidden');
+        }
+
+        // Input help modal parameters
+        function displayInputHelp(mode) {
+            const title = document.getElementById('help-info-title');
+            const desc = document.getElementById('help-info-text');
+            const modal = document.getElementById('modal-input-help');
+
+            if (mode === 'app') {
+                title.innerText = "Application ID Guide";
+                desc.innerText = "Please provide the official 12-digit JEE Main 2026 Application Number or Joint Entrance Examination (Advanced) registered credential sequence.";
+            } else if (mode === 'pwd') {
+                title.innerText = "Password Guide";
+                desc.innerText = "Provide your custom alphabetic-numeric-symbol password finalized during central NTA counseling enrollment.";
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        // Help Modal dismiss
+        function closeInputHelpModal() {
+            document.getElementById('modal-input-help').classList.add('hidden');
+        }
+
+        // Mobile sidebar control triggers
+        function toggleSidebarDrawer() {
+            const drawer = document.getElementById('dashboard-sidebar-drawer');
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+            } else {
+                drawer.classList.add('-translate-x-full');
+            }
+        }
+
+        // Sign out terminal operations
+        function terminateSessionLogout() {
+            if (appCountdownTimerId) clearInterval(appCountdownTimerId);
+            isFeeTransactionCompleted = false;
+
+            // Reset Payment views
+            document.getElementById('payment-box-active').classList.remove('hidden');
+            document.getElementById('payment-box-completed').classList.add('hidden');
+            document.getElementById('fee-badge-container').innerHTML = `
+                <span class="inline-flex items-center space-x-1.5 px-3 py-1 bg-red-100 text-red-800 text-[11px] font-black rounded-full animate-pulse cursor-pointer" onclick="switchDashboardTab('fee-payment')">
+                    <i class="fa-solid fa-times-circle"></i>
+                    <span>Incomplete</span>
+                </span>
+            `;
+
+            document.getElementById('receipt-letter-fee-status').innerText = "PENDING PAF FEE (ACTION REQUIRED)";
+            document.getElementById('receipt-letter-fee-status').className = "font-black text-red-700";
+            document.getElementById('receipt-letter-paf-note').innerText = "(Status: Incomplete/Action Needed)";
+            document.getElementById('receipt-letter-paf-note').className = "font-bold text-red-700";
+
+            // Route back to default Homepage loaded on startup
+            changeScreenView('homepage');
+
+            // Reset sign in inputs
+            document.getElementById('input-security-pin').value = "";
+            refreshCaptchaPin();
+        }
+    </script>
+</body>
+</html>
